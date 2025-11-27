@@ -1,91 +1,497 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+<!doctype html>
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página do Daniel - Futebol</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>SiteFlex Studio — Sites rápidos e acessíveis</title>
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-    <style>
-        body {
-            background: #0a3d0a;
-            color: white;
-        }
-        .hero {
-            background-image: url('https://images.unsplash.com/photo-1517927033932-b3d18e61fb3a');
-            background-size: cover;
-            background-position: center;
-            height: 60vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-shadow: 2px 2px 5px black;
-        }
-        .card img {
-            height: 200px;
-            object-fit: cover;
-        }
-    </style>
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    :root{
+      --brand-1: #ff4f3d;   /* laranja chamativo */
+      --brand-2: #3b2b8f;   /* roxo profundo */
+      --muted: #f6f6f8;
+      --accent: #0d6efd;
+      --radius: 14px;
+    }
+    body{
+      font-family: 'Poppins', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color:#222;
+      background: linear-gradient(180deg, #ffffff 0%, var(--muted) 100%);
+    }
+    /* header / logo */
+    .brand-svg{ width:64px; height:64px; }
+    .navbar-brand { display:flex; align-items:center; gap:.75rem; font-weight:600; }
+    .hero{
+      padding:5.5rem 0;
+    }
+    .card-spot{
+      border-radius:var(--radius);
+      box-shadow: 0 8px 30px rgba(35,35,60,0.06);
+    }
+    .service-icon{
+      width:56px;height:56px;border-radius:12px;display:grid;place-items:center;color:white;font-weight:700;
+      box-shadow: 0 6px 18px rgba(59,43,143,0.12);
+    }
+    .cta-btn{
+      border-radius:12px;
+      padding:0.75rem 1.25rem;
+      font-weight:600;
+    }
+    .feature{
+      padding:1rem;
+      border-radius:12px;
+      background:linear-gradient(180deg, rgba(59,43,143,0.03), rgba(255,79,61,0.01));
+    }
+    footer{ background:#0f1723; color:#e6eef8; padding:2.5rem 0; }
+    .logo-solo{ width:52px; height:52px; }
+    /* responsive tweaks */
+    @media (max-width:767px){
+      .hero{ padding:3.5rem 0; text-align:center; }
+      .navbar-brand{ justify-content:center; width:100%;}
+    }
+  </style>
 </head>
 <body>
 
-    <!-- Header -->
-    <nav class="navbar navbar-dark bg-dark">
-        <div class="container">
-            <span class="navbar-brand mb-0 h1">Daniel - Mundo do Futebol</span>
-        </div>
-    </nav>
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white py-3 shadow-sm">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+      <!-- SVG logo (inline, editable) -->
+      <svg class="brand-svg" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Logo SiteFlex Studio">
+        <defs>
+          <linearGradient id="g1" x1="0" x2="1">
+            <stop offset="0" stop-color="#3b2b8f"/>
+            <stop offset="1" stop-color="#ff4f3d"/>
+          </linearGradient>
+        </defs>
+        <rect x="4" y="8" width="56" height="48" rx="8" fill="none" stroke="url(#g1)" stroke-width="5"/>
+        <g transform="translate(12,12)" fill="url(#g1)">
+          <path d="M12 8c6 0 11 5 11 11s-5 11-11 11-11-5-11-11 5-11 11-11zm1.8 14.4c2.7-1.6 4.6-4.4 4.6-7.6h-3.2c0 1.9-1.2 3.5-2.9 4.2v3.4z"/>
+        </g>
+      </svg>
 
-    <!-- Hero -->
-    <div class="hero">
-        <h1 class="display-3 fw-bold">Bem-vindo ao campo, Daniel!</h1>
+      <span>
+        <div style="line-height:1;">SiteFlex <span style="font-weight:600;color:var(--brand-2);display:block;font-size:.9rem;">Studio</span></div>
+      </span>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav ms-auto align-items-lg-center">
+        <li class="nav-item"><a class="nav-link" href="#services">Serviços</a></li>
+        <li class="nav-item"><a class="nav-link" href="#portfolio">Portfólio</a></li>
+        <li class="nav-item"><a class="nav-link" href="#pricing">Planos</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contato</a></li>
+        <li class="nav-item ms-3">
+          <a class="btn btn-outline-primary cta-btn" href="#contact">Solicitar orçamento</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6">
+        <h1 class="display-5 fw-bold">Sites rápidos e profissionais para seu negócio local</h1>
+        <p class="lead text-muted">Presença online simples, responsiva e fácil de gerenciar — feito com Bootstrap ou WordPress, ideal para lojas, restaurantes e prestadores de serviço.</p>
+
+        <div class="d-flex flex-wrap gap-2 mt-4">
+          <a href="#contact" class="btn btn-primary cta-btn">Pedir orçamento — <strong>Rápido</strong></a>
+          <a href="#portfolio" class="btn btn-outline-secondary cta-btn">Ver exemplos</a>
+        </div>
+
+        <ul class="list-unstyled mt-4">
+          <li class="mb-2"><strong>Entrega rápida:</strong> sites no ar em poucos dias</li>
+          <li class="mb-2"><strong>Fácil de manter:</strong> editor WordPress ou estrutura Bootstrap</li>
+          <li class="mb-2"><strong>Suporte humano:</strong> ajuda para deixar tudo certo</li>
+        </ul>
+
+        <div class="mt-3">
+          <small>Contato direto: <strong>Daniel Cruz</strong> — <a href="tel:+5516996148400">+55 16 99614-8400</a> • <a href="https://wa.me/5516996148400" target="_blank" rel="noopener">WhatsApp</a></small>
+        </div>
+      </div>
+
+      <div class="col-lg-6 mt-4 mt-lg-0">
+        <div class="card card-spot p-3 border-0">
+          <img src="https://picsum.photos/seed/siteflex-hero/900/600" alt="Exemplo de site" class="img-fluid rounded" style="max-height:420px; object-fit:cover;">
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- SERVICES -->
+<section id="services" class="py-5">
+  <div class="container">
+    <div class="text-center mb-4">
+      <h2 class="fw-bold">Nossos serviços</h2>
+      <p class="text-muted">Soluções pensadas para negócios que precisam de presença online objetiva e eficiente.</p>
     </div>
 
-    <!-- Conteúdo -->
-    <div class="container my-5">
-        <h2 class="text-center mb-4">Notícias e Destaques do Futebol</h2>
-
-        <div class="row g-4">
-            <div class="col-md-4">
-                <div class="card text-dark">
-                    <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2" class="card-img-top">
-                    <div class="card-body">
-                        <h5 class="card-title">Grandes Jogos</h5>
-                        <p class="card-text">As partidas mais emocionantes do momento no mundo da bola.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="card text-dark">
-                    <img src="https://images.unsplash.com/photo-1521412644187-c49fa049e84d" class="card-img-top">
-                    <div class="card-body">
-                        <h5 class="card-title">Jogadores em Destaque</h5>
-                        <p class="card-text">Atletas que estão brilhando nos campeonatos atuais.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="card text-dark">
-                    <img src="https://images.unsplash.com/photo-1505765050516-f72dcac9c60e" class="card-img-top">
-                    <div class="card-body">
-                        <h5 class="card-title">Curiosidades</h5>
-                        <p class="card-text">Fatos incríveis e curiosidades sobre o esporte.</p>
-                    </div>
-                </div>
-            </div>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4">
+        <div class="d-flex gap-3 align-items-start feature">
+          <div class="service-icon" style="background:linear-gradient(180deg,var(--brand-2),var(--brand-1));">S</div>
+          <div>
+            <h5 class="mb-1">Site Institucional</h5>
+            <p class="mb-0 text-muted">3–5 páginas para apresentar sua empresa e contatos.</p>
+          </div>
         </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="d-flex gap-3 align-items-start feature">
+          <div class="service-icon" style="background:linear-gradient(180deg,var(--brand-1),var(--brand-2));">L</div>
+          <div>
+            <h5 class="mb-1">Landing Page</h5>
+            <p class="mb-0 text-muted">Páginas de conversão para promoções e campanhas.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="d-flex gap-3 align-items-start feature">
+          <div class="service-icon" style="background:linear-gradient(180deg,var(--accent),#2076ff);">R</div>
+          <div>
+            <h5 class="mb-1">Site para Restaurante</h5>
+            <p class="mb-0 text-muted">Cardápio online, localização e integração com pedido via WhatsApp.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="d-flex gap-3 align-items-start feature">
+          <div class="service-icon" style="background:#2bb673">P</div>
+          <div>
+            <h5 class="mb-1">Portfólio</h5>
+            <p class="mb-0 text-muted">Galeria elegante para mostrar seus trabalhos.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="d-flex gap-3 align-items-start feature">
+          <div class="service-icon" style="background:#6c757d">M</div>
+          <div>
+            <h5 class="mb-1">Manutenção Mensal</h5>
+            <p class="mb-0 text-muted">Updates, backups e suporte contínuo.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="d-flex gap-3 align-items-start feature">
+          <div class="service-icon" style="background:#ffb020">H</div>
+          <div>
+            <h5 class="mb-1">Hospedagem & Configuração</h5>
+            <p class="mb-0 text-muted">Configuração de domínio, SSL e e-mails.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio" class="py-5 bg-white">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h3 class="fw-bold">Exemplos</h3>
+      <p class="text-muted mb-0">Modelos rápidos e adaptáveis a diversos segmentos.</p>
     </div>
 
-    <!-- Rodapé -->
-    <footer class="bg-dark text-center py-3">
-        <p class="mb-0">Página criada para Daniel • Tema: Futebol ⚽</p>
-    </footer>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4">
+        <div class="card card-spot overflow-hidden">
+          <img src="https://picsum.photos/seed/portfolio1/800/500" class="card-img-top" alt="Projeto 1">
+          <div class="card-body">
+            <h5 class="card-title mb-1">Padaria do Bairro — Landing</h5>
+            <p class="text-muted small mb-2">Cardápio, horário e botão direto para pedido via WhatsApp.</p>
+            <a href="#" class="btn btn-sm btn-outline-primary">Ver modelo</a>
+          </div>
+        </div>
+      </div>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+      <div class="col-md-6 col-lg-4">
+        <div class="card card-spot overflow-hidden">
+          <img src="https://picsum.photos/seed/portfolio2/800/500" class="card-img-top" alt="Projeto 2">
+          <div class="card-body">
+            <h5 class="card-title mb-1">Auto Elétrica — Institucional</h5>
+            <p class="text-muted small mb-2">Página de serviços com formulário simples de contato.</p>
+            <a href="#" class="btn btn-sm btn-outline-primary">Ver modelo</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="card card-spot overflow-hidden">
+          <img src="https://picsum.photos/seed/portfolio3/800/500" class="card-img-top" alt="Projeto 3">
+          <div class="card-body">
+            <h5 class="card-title mb-1">Escritório Contábil — Portfólio</h5>
+            <p class="text-muted small mb-2">Seção de serviços e agendamento por WhatsApp.</p>
+            <a href="#" class="btn btn-sm btn-outline-primary">Ver modelo</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING / PACKAGES -->
+<section id="pricing" class="py-5">
+  <div class="container">
+    <div class="text-center mb-4">
+      <h3 class="fw-bold">Planos simples</h3>
+      <p class="text-muted">Escolha o que cabe no seu negócio — transparência e entrega rápida.</p>
+    </div>
+
+    <div class="row g-4 justify-content-center">
+      <div class="col-md-6 col-lg-4">
+        <div class="card card-spot p-3 border-0 h-100">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Básico</h5>
+            <p class="text-muted">Landing page, 1 revisão, entrega em 3–5 dias.</p>
+            <ul class="text-muted small">
+              <li>Página única</li>
+              <li>Formulário de contato</li>
+              <li>Integração WhatsApp</li>
+            </ul>
+            <div class="mt-auto">
+              <a href="#contact" class="btn btn-outline-primary w-100">Pedir orçamento</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="card card-spot p-3 border-0 h-100">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Profissional</h5>
+            <p class="text-muted">Site institucional 3–5 páginas, SEO básico, 2 revisões.</p>
+            <ul class="text-muted small">
+              <li>Até 5 páginas</li>
+              <li>SEO on-page básico</li>
+              <li>Instalação em hospedagem</li>
+            </ul>
+            <div class="mt-auto">
+              <a href="#contact" class="btn btn-primary w-100">Solicitar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT / WHY -->
+<section id="about" class="py-5 bg-white">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-7">
+        <h3 class="fw-bold">Por que escolher o SiteFlex Studio?</h3>
+        <p class="text-muted">Desenvolvemos sites com foco em resultados: carregamento rápido, experiência mobile e estrutura que facilita a atualização pelo próprio cliente.</p>
+
+        <ul class="text-muted">
+          <li>Templates profissionais baseados em Bootstrap ou WordPress.</li>
+          <li>Processo claro: briefing → rascunho → revisão → entrega.</li>
+          <li>Suporte para publicação e orientações básicas de divulgação.</li>
+        </ul>
+      </div>
+      <div class="col-lg-5">
+        <img src="https://picsum.photos/seed/about-siteflex/800/600" class="img-fluid rounded card-spot" alt="Sobre">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS (optional) -->
+<section class="py-5">
+  <div class="container">
+    <div class="text-center mb-4">
+      <h4 class="fw-bold">Depoimentos</h4>
+      <p class="text-muted">O que clientes locais falam sobre nossos sites.</p>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-6">
+        <div class="p-4 feature">
+          <p class="mb-1">"Site simples, rápido e direto — nosso restaurante começou a receber pedidos via WhatsApp em menos de uma semana." <br><small class="text-muted">— Dona Maria, Padaria</small></p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="p-4 feature">
+          <p class="mb-1">"A plataforma ficou muito fácil de atualizar. Atendimento ótimo." <br><small class="text-muted">— João, Barbearia</small></p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="py-5 bg-white">
+  <div class="container">
+    <div class="row g-4 align-items-center">
+      <div class="col-lg-6">
+        <h3 class="fw-bold">Vamos tirar seu site do papel?</h3>
+        <p class="text-muted">Entre em contato direto — respondemos rápido.</p>
+
+        <div class="card p-4 card-spot">
+          <h6 class="mb-2">Informações</h6>
+          <p class="mb-1"><strong>Daniel Cruz</strong></p>
+          <p class="mb-1">Telefone: <a href="tel:+5516996148400">+55 16 99614-8400</a></p>
+          <p class="mb-1">WhatsApp: <a href="https://wa.me/5516996148400" target="_blank" rel="noopener">Abrir conversa</a></p>
+          <p class="mb-0">Também fazemos instalação na sua hospedagem ou podemos indicar uma opção acessível.</p>
+        </div>
+
+        <div class="mt-3 small text-muted">
+          <strong>Observação:</strong> Substitua imagens de exemplo e textos pelo conteúdo do seu negócio antes de publicar.
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <form id="contactForm" class="card p-4 card-spot">
+          <h6 class="mb-3">Solicitar orçamento</h6>
+
+          <div class="mb-3">
+            <label class="form-label">Nome</label>
+            <input id="name" class="form-control" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">E-mail</label>
+            <input id="email" type="email" class="form-control" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Telefone (opcional)</label>
+            <input id="phone" class="form-control" placeholder="+55 16 ...">
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Mensagem / Brief</label>
+            <textarea id="message" rows="4" class="form-control" placeholder="Ex.: Preciso de site para restaurante com cardápio e botão WhatsApp" required></textarea>
+          </div>
+
+          <div class="d-flex gap-2">
+            <button type="submit" class="btn btn-primary">Enviar</button>
+            <button type="button" id="whatsBtn" class="btn btn-outline-success">Enviar via WhatsApp</button>
+          </div>
+
+          <div id="formAlert" class="mt-3" style="display:none;"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <div class="d-flex gap-3 align-items-center">
+          <svg class="logo-solo" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="SiteFlex logo small">
+            <defs>
+              <linearGradient id="g2" x1="0" x2="1">
+                <stop offset="0" stop-color="#3b2b8f"/>
+                <stop offset="1" stop-color="#ff4f3d"/>
+              </linearGradient>
+            </defs>
+            <rect x="4" y="8" width="56" height="48" rx="8" fill="none" stroke="url(#g2)" stroke-width="4"/>
+            <g transform="translate(12,12)" fill="url(#g2)">
+              <path d="M12 8c6 0 11 5 11 11s-5 11-11 11-11-5-11-11 5-11 11-11z"/>
+            </g>
+          </svg>
+
+          <div>
+            <div class="text-white fw-bold">SiteFlex Studio</div>
+            <div class="text-muted small">Sites rápidos e acessíveis para comércios locais</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 text-md-end mt-3 mt-md-0">
+        <small class="text-muted d-block">Contato: <a class="text-white" href="tel:+5516996148400">+55 16 99614-8400</a> • <a class="text-white" href="https://wa.me/5516996148400" target="_blank" rel="noopener">WhatsApp</a></small>
+        <small class="text-muted">© <span id="year"></span> SiteFlex Studio • Desenvolvido com foco em velocidade e simplicidade.</small>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Bootstrap + JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  // Atualiza ano do rodapé
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Form handling: abre mailto com dados
+  const form = document.getElementById('contactForm');
+  const formAlert = document.getElementById('formAlert');
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const message = document.getElementById('message').value.trim();
+
+    if(!name || !email || !message){
+      showAlert('Preencha nome, e-mail e mensagem.', 'danger');
+      return;
+    }
+
+    const subject = encodeURIComponent('Orçamento - SiteFlex Studio');
+    const body = encodeURIComponent(
+      "Nome: " + name + "\\n" +
+      "Email: " + email + "\\n" +
+      "Telefone: " + phone + "\\n\\n" +
+      "Mensagem: " + message
+    );
+
+    // open default mail client
+    window.location.href = `mailto:contato@siteflex.studio?subject=${subject}&body=${body}`;
+    showAlert('Abrindo seu cliente de e-mail...', 'success');
+  });
+
+  // WhatsApp quick send
+  document.getElementById('whatsBtn').addEventListener('click', function(){
+    const name = document.getElementById('name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const message = document.getElementById('message').value.trim();
+    if(!name || !message){
+      showAlert('Para enviar via WhatsApp, por favor preencha Nome e Mensagem.', 'danger');
+      return;
+    }
+    const text = encodeURIComponent(
+      `Olá, sou ${name}. ${ phone ? 'Meu telefone é ' + phone + '. ' : '' }${message}`
+    );
+    // seu número: +55 16 99614-8400 -> 5516996148400
+    window.open(`https://wa.me/5516996148400?text=${text}`, '_blank');
+  });
+
+  function showAlert(text, type){
+    formAlert.style.display = 'block';
+    formAlert.className = 'alert alert-' + type;
+    formAlert.textContent = text;
+    setTimeout(()=> formAlert.style.display = 'none', 5000);
+  }
+</script>
+
 </body>
 </html>
